@@ -107,7 +107,8 @@ public class NeuralNetwork {
     public static void main(String[] args) throws IOException {
 
         boolean running = true;
-        img = new ImageIcon(ClassLoader.getSystemResource("icon.png"));
+        java.net.URL url = NeuralNetwork.class.getResource("images/icon.png");
+        img = new ImageIcon(url);
         JFrame errorframe = new JFrame("Error!");
         errorframe.setIconImage(img.getImage());
         isReturn = false;
@@ -749,7 +750,7 @@ public class NeuralNetwork {
 
                         } else {
 
-                            System.exit(0);
+                            //System.exit(0);
 
                         }
 
@@ -762,7 +763,7 @@ public class NeuralNetwork {
             } else {
 
                 output = false;
-                System.exit(0);
+                //System.exit(0);
 
             }
 
@@ -1041,12 +1042,12 @@ public class NeuralNetwork {
         jframe.add(learningRateInputScroll);
 
         helpButton = new JButton("Help!");
-        helpButton.setBounds(332, 365, 60, 30);
+        helpButton.setBounds(317, 365, 75, 30);
         helpButton.setFont(new Font("Times New Roman", Font.PLAIN, 9));
         jframe.add(helpButton);
 
         submitButton = new JButton("Submit");
-        submitButton.setBounds(25, 365, 60, 30);
+        submitButton.setBounds(25, 365, 75, 30);
         submitButton.setFont(new Font("Times New Roman", Font.PLAIN, 9));
         jframe.add(submitButton);
 
@@ -1112,7 +1113,7 @@ public class NeuralNetwork {
                 helpFrame.setLocationRelativeTo(null);
 
                 text.setBounds(25, 25, 100, 100);
-                text.setText("	-How Should I Set Up My Input and Output Files?\n\n	     First of all, what is \"input\" and \"output?\"\n	          Well... this is the training data, the data that shows the network\n	          how to learn. For the nth position of the input data, the nth position\n	          of the output file is the answer to the \"question\" of the input data.\n\n	          The following example is of two 1 digit binary numbers (a zero or\n	          one) as the inputs, and their sum as the output (0 + 0 = 0, 1 + 0\n	          = 1, 0 + 1 = 1, 1 + 1 = 2).\n\n	     Input File:\n	          {zero, one, two};\n	          {0, 0}; \n	          {1, 0}; \n	          {0, 1}; \n	          {1, 1}\n\n	     Output File:\n	          {zero, one, two};\n	          {1, 0, 0};\n	          {0, 1, 0};\n	          {0, 1, 0};\n	          {0, 0, 1}\n\n	     So the words (zero, one, two) are the answers, in order, from top to\n	     bottom. As you can see, the output file is the answers to the input.\n	     For the first \"question\"  0 + 0 has the answer 0, that is why the \n	     answer in the output file the first answer array has a 1 in the first \n	     position, which as seen in the answer names, is \"zero,\" and the\n	     rest of the positions are marked as 0s.\n\n	     Just one more example with the previous one, to drive home how it\n	     works. For the 3rd \"question,\" it is 0 and 1, which will equal 1. so\n	     in the 3rd \"answer,\" the only position with a 1 is the center, since\n	     the first position is zero, second is one, and third is two.\n\n	     Also, the data does not have to be added together as the answer, you\n	     can put in abstract data, such as entering in all the pixels of a\n	     picture (the picture either containing an apple or orange), and\n	     having there be two answers, orange or apple, meaning the top line\n	     of each file (input and output) will start with this:\n\n	     {Orange, Apple};\n\n	     It is also important to note that each line is seperated by a semi-\n	     colon, EXCEPT the last line, which does NOT have a semicolon at the\n	     end of the line. Also, spaces and new lines have no meaning in the\n	     file, just the digits, curly brackets, commas, semicolons, and words\n	     in the first line of each file (those too have to be seperated by\n	     commas, enclosed in curly brackets, and have a semicolon at the end\n	     of the line.");
+                text.setText("\n	Github: https://github.com/benjaminBroudy/TrainABrain \n\n	-How Should I Set Up My Input and Output Files?\n\n	     First of all, what is \"input\" and \"output?\"\n	          Well... this is the training data, the data that shows the network\n	          how to learn. For the nth position of the input data, the nth position\n	          of the output file is the answer to the \"question\" of the input data.\n\n	          The following example is of two 1 digit binary numbers (a zero or\n	          one) as the inputs, and their sum as the output (0 + 0 = 0, 1 + 0\n	          = 1, 0 + 1 = 1, 1 + 1 = 2).\n\n	     Input File:\n	          {zero, one, two};\n	          {0, 0}; \n	          {1, 0}; \n	          {0, 1}; \n	          {1, 1}\n\n	     Output File:\n	          {zero, one, two};\n	          {1, 0, 0};\n	          {0, 1, 0};\n	          {0, 1, 0};\n	          {0, 0, 1}\n\n	     So the words (zero, one, two) are the answers, in order, from top to\n	     bottom. As you can see, the output file is the answers to the input.\n	     For the first \"question\"  0 + 0 has the answer 0, that is why the \n	     answer in the output file the first answer array has a 1 in the first \n	     position, which as seen in the answer names, is \"zero,\" and the\n	     rest of the positions are marked as 0s.\n\n	     Just one more example with the previous one, to drive home how it\n	     works. For the 3rd \"question,\" it is 0 and 1, which will equal 1. so\n	     in the 3rd \"answer,\" the only position with a 1 is the center, since\n	     the first position is zero, second is one, and third is two.\n\n	     Also, the data does not have to be added together as the answer, you\n	     can put in abstract data, such as entering in all the pixels of a\n	     picture (the picture either containing an apple or orange), and\n	     having there be two answers, orange or apple, meaning the top line\n	     of each file (input and output) will start with this:\n\n	     {Orange, Apple};\n\n	     It is also important to note that each line is seperated by a semi-\n	     colon, EXCEPT the last line, which does NOT have a semicolon at the\n	     end of the line. Also, spaces and new lines have no meaning in the\n	     file, just the digits, curly brackets, commas, semicolons, and words\n	     in the first line of each file (those too have to be seperated by\n	     commas, enclosed in curly brackets, and have a semicolon at the end\n	     of the line.");
                 text.setCaretPosition(0);
                 text.setEditable(false);
 
@@ -1302,12 +1303,12 @@ public class NeuralNetwork {
         jframe.add(learningRateInputScroll);
 
         helpButton = new JButton("Help!");
-        helpButton.setBounds(332, 365, 60, 30);
+        helpButton.setBounds(317, 365, 75, 30);
         helpButton.setFont(new Font("Times New Roman", Font.PLAIN, 9));
         jframe.add(helpButton);
 
         submitButton = new JButton("Submit");
-        submitButton.setBounds(25, 365, 60, 30);
+        submitButton.setBounds(25, 365, 75, 30);
         submitButton.setFont(new Font("Times New Roman", Font.PLAIN, 9));
         jframe.add(submitButton);
 
@@ -1396,7 +1397,7 @@ public class NeuralNetwork {
                 helpFrame.setLocationRelativeTo(null);
 
                 text.setBounds(25, 25, 100, 100);
-                text.setText("	-How Should I Set Up My Input and Output Files?\n\n	     First of all, what is \"input\" and \"output?\"\n	          Well... this is the training data, the data that shows the network\n	          how to learn. For the nth position of the input data, the nth position\n	          of the output file is the answer to the \"question\" of the input data.\n\n	          The following example is of two 1 digit binary numbers (a zero or\n	          one) as the inputs, and their sum as the output (0 + 0 = 0, 1 + 0\n	          = 1, 0 + 1 = 1, 1 + 1 = 2).\n\n	     Input File:\n	          {zero, one, two};\n	          {0, 0}; \n	          {1, 0}; \n	          {0, 1}; \n	          {1, 1}\n\n	     Output File:\n	          {zero, one, two};\n	          {1, 0, 0};\n	          {0, 1, 0};\n	          {0, 1, 0};\n	          {0, 0, 1}\n\n	     So the words (zero, one, two) are the answers, in order, from top to\n	     bottom. As you can see, the output file is the answers to the input.\n	     For the first \"question\"  0 + 0 has the answer 0, that is why the \n	     answer in the output file the first answer array has a 1 in the first \n	     position, which as seen in the answer names, is \"zero,\" and the\n	     rest of the positions are marked as 0s.\n\n	     Just one more example with the previous one, to drive home how it\n	     works. For the 3rd \"question,\" it is 0 and 1, which will equal 1. so\n	     in the 3rd \"answer,\" the only position with a 1 is the center, since\n	     the first position is zero, second is one, and third is two.\n\n	     Also, the data does not have to be added together as the answer, you\n	     can put in abstract data, such as entering in all the pixels of a\n	     picture (the picture either containing an apple or orange), and\n	     having there be two answers, orange or apple, meaning the top line\n	     of each file (input and output) will start with this:\n\n	     {Orange, Apple};\n\n	     It is also important to note that each line is seperated by a semi-\n	     colon, EXCEPT the last line, which does NOT have a semicolon at the\n	     end of the line. Also, spaces and new lines have no meaning in the\n	     file, just the digits, curly brackets, commas, semicolons, and words\n	     in the first line of each file (those too have to be seperated by\n	     commas, enclosed in curly brackets, and have a semicolon at the end\n	     of the line.");
+                text.setText("\n	Github: https://github.com/benjaminBroudy/TrainABrain \n\n	-How Should I Set Up My Input and Output Files?\n\n	     First of all, what is \"input\" and \"output?\"\n	          Well... this is the training data, the data that shows the network\n	          how to learn. For the nth position of the input data, the nth position\n	          of the output file is the answer to the \"question\" of the input data.\n\n	          The following example is of two 1 digit binary numbers (a zero or\n	          one) as the inputs, and their sum as the output (0 + 0 = 0, 1 + 0\n	          = 1, 0 + 1 = 1, 1 + 1 = 2).\n\n	     Input File:\n	          {zero, one, two};\n	          {0, 0}; \n	          {1, 0}; \n	          {0, 1}; \n	          {1, 1}\n\n	     Output File:\n	          {zero, one, two};\n	          {1, 0, 0};\n	          {0, 1, 0};\n	          {0, 1, 0};\n	          {0, 0, 1}\n\n	     So the words (zero, one, two) are the answers, in order, from top to\n	     bottom. As you can see, the output file is the answers to the input.\n	     For the first \"question\"  0 + 0 has the answer 0, that is why the \n	     answer in the output file the first answer array has a 1 in the first \n	     position, which as seen in the answer names, is \"zero,\" and the\n	     rest of the positions are marked as 0s.\n\n	     Just one more example with the previous one, to drive home how it\n	     works. For the 3rd \"question,\" it is 0 and 1, which will equal 1. so\n	     in the 3rd \"answer,\" the only position with a 1 is the center, since\n	     the first position is zero, second is one, and third is two.\n\n	     Also, the data does not have to be added together as the answer, you\n	     can put in abstract data, such as entering in all the pixels of a\n	     picture (the picture either containing an apple or orange), and\n	     having there be two answers, orange or apple, meaning the top line\n	     of each file (input and output) will start with this:\n\n	     {Orange, Apple};\n\n	     It is also important to note that each line is seperated by a semi-\n	     colon, EXCEPT the last line, which does NOT have a semicolon at the\n	     end of the line. Also, spaces and new lines have no meaning in the\n	     file, just the digits, curly brackets, commas, semicolons, and words\n	     in the first line of each file (those too have to be seperated by\n	     commas, enclosed in curly brackets, and have a semicolon at the end\n	     of the line.");
                 text.setCaretPosition(0);
                 text.setEditable(false);
 
@@ -1544,12 +1545,12 @@ public class NeuralNetwork {
         });
 
         helpButton = new JButton("Help!");
-        helpButton.setBounds(332, 365, 60, 30);
+        helpButton.setBounds(317, 365, 75, 30);
         helpButton.setFont(new Font("Times New Roman", Font.PLAIN, 9));
         jframe.add(helpButton);
 
         submitButton = new JButton("Submit");
-        submitButton.setBounds(25, 365, 60, 30);
+        submitButton.setBounds(25, 365, 75, 30);
         submitButton.setFont(new Font("Times New Roman", Font.PLAIN, 9));
         jframe.add(submitButton);
 
@@ -1569,7 +1570,7 @@ public class NeuralNetwork {
                 helpFrame.setLocationRelativeTo(null);
 
                 text.setBounds(25, 25, 100, 100);
-                text.setText("	-How Should I Set Up My Input and Output Files?\n\n	     First of all, what is \"input\" and \"output?\"\n	          Well... this is the training data, the data that shows the network\n	          how to learn. For the nth position of the input data, the nth position\n	          of the output file is the answer to the \"question\" of the input data.\n\n	          The following example is of two 1 digit binary numbers (a zero or\n	          one) as the inputs, and their sum as the output (0 + 0 = 0, 1 + 0\n	          = 1, 0 + 1 = 1, 1 + 1 = 2).\n\n	     Input File:\n	          {zero, one, two};\n	          {0, 0}; \n	          {1, 0}; \n	          {0, 1}; \n	          {1, 1}\n\n	     Output File:\n	          {zero, one, two};\n	          {1, 0, 0};\n	          {0, 1, 0};\n	          {0, 1, 0};\n	          {0, 0, 1}\n\n	     So the words (zero, one, two) are the answers, in order, from top to\n	     bottom. As you can see, the output file is the answers to the input.\n	     For the first \"question\"  0 + 0 has the answer 0, that is why the \n	     answer in the output file the first answer array has a 1 in the first \n	     position, which as seen in the answer names, is \"zero,\" and the\n	     rest of the positions are marked as 0s.\n\n	     Just one more example with the previous one, to drive home how it\n	     works. For the 3rd \"question,\" it is 0 and 1, which will equal 1. so\n	     in the 3rd \"answer,\" the only position with a 1 is the center, since\n	     the first position is zero, second is one, and third is two.\n\n	     Also, the data does not have to be added together as the answer, you\n	     can put in abstract data, such as entering in all the pixels of a\n	     picture (the picture either containing an apple or orange), and\n	     having there be two answers, orange or apple, meaning the top line\n	     of each file (input and output) will start with this:\n\n	     {Orange, Apple};\n\n	     It is also important to note that each line is seperated by a semi-\n	     colon, EXCEPT the last line, which does NOT have a semicolon at the\n	     end of the line. Also, spaces and new lines have no meaning in the\n	     file, just the digits, curly brackets, commas, semicolons, and words\n	     in the first line of each file (those too have to be seperated by\n	     commas, enclosed in curly brackets, and have a semicolon at the end\n	     of the line.");
+                text.setText("\n	Github: https://github.com/benjaminBroudy/TrainABrain \n\n	-How Should I Set Up My Input and Output Files?\n\n	     First of all, what is \"input\" and \"output?\"\n	          Well... this is the training data, the data that shows the network\n	          how to learn. For the nth position of the input data, the nth position\n	          of the output file is the answer to the \"question\" of the input data.\n\n	          The following example is of two 1 digit binary numbers (a zero or\n	          one) as the inputs, and their sum as the output (0 + 0 = 0, 1 + 0\n	          = 1, 0 + 1 = 1, 1 + 1 = 2).\n\n	     Input File:\n	          {zero, one, two};\n	          {0, 0}; \n	          {1, 0}; \n	          {0, 1}; \n	          {1, 1}\n\n	     Output File:\n	          {zero, one, two};\n	          {1, 0, 0};\n	          {0, 1, 0};\n	          {0, 1, 0};\n	          {0, 0, 1}\n\n	     So the words (zero, one, two) are the answers, in order, from top to\n	     bottom. As you can see, the output file is the answers to the input.\n	     For the first \"question\"  0 + 0 has the answer 0, that is why the \n	     answer in the output file the first answer array has a 1 in the first \n	     position, which as seen in the answer names, is \"zero,\" and the\n	     rest of the positions are marked as 0s.\n\n	     Just one more example with the previous one, to drive home how it\n	     works. For the 3rd \"question,\" it is 0 and 1, which will equal 1. so\n	     in the 3rd \"answer,\" the only position with a 1 is the center, since\n	     the first position is zero, second is one, and third is two.\n\n	     Also, the data does not have to be added together as the answer, you\n	     can put in abstract data, such as entering in all the pixels of a\n	     picture (the picture either containing an apple or orange), and\n	     having there be two answers, orange or apple, meaning the top line\n	     of each file (input and output) will start with this:\n\n	     {Orange, Apple};\n\n	     It is also important to note that each line is seperated by a semi-\n	     colon, EXCEPT the last line, which does NOT have a semicolon at the\n	     end of the line. Also, spaces and new lines have no meaning in the\n	     file, just the digits, curly brackets, commas, semicolons, and words\n	     in the first line of each file (those too have to be seperated by\n	     commas, enclosed in curly brackets, and have a semicolon at the end\n	     of the line.");
                 text.setCaretPosition(0);
                 text.setEditable(false);
 
@@ -1667,7 +1668,7 @@ public class NeuralNetwork {
         Object obj = new Object();
         saveNetwork = true;
 
-        save.setSize(380, 130);
+        save.setSize(380, 160);
         save.setResizable(false);
         save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         save.setLocationRelativeTo(null);
@@ -1833,7 +1834,7 @@ public class NeuralNetwork {
         Object obj = new Object();
         yesOrNo = true;
 
-        save.setSize(380, 130);
+        save.setSize(380, 160);
         save.setResizable(false);
         save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         save.setLocationRelativeTo(null);
@@ -1916,7 +1917,7 @@ public class NeuralNetwork {
         Object obj = new Object();
         yesOrNo = true;
 
-        error.setSize(380, 130);
+        error.setSize(380, 160);
         error.setResizable(false);
         error.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         error.setLocationRelativeTo(null);
@@ -1992,10 +1993,10 @@ public class NeuralNetwork {
         JFrame saved = new JFrame("Train A Brain");
         saved.setIconImage(img.getImage());
         JTextArea title = new JTextArea();
-        JButton exit = new JButton ("Exit");
+        JButton exit = new JButton ("Exit!");
         Object obj = new Object();
 
-        saved.setSize(380, 130);
+        saved.setSize(380, 160);
         saved.setResizable(false);
         saved.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         saved.setLocationRelativeTo(null);
@@ -2042,7 +2043,6 @@ public class NeuralNetwork {
         }
 
         saved.dispose();
-        System.exit(0);
 
     }
     
@@ -2174,7 +2174,7 @@ public class NeuralNetwork {
                 helpFrame.setLocationRelativeTo(null);
 
                 text.setBounds(25, 25, 100, 100);
-                text.setText("	-How Should I Set Up My Input and Output Files?\n\n	     First of all, what is \"input\" and \"output?\"\n	          Well... this is the training data, the data that shows the network\n	          how to learn. For the nth position of the input data, the nth position\n	          of the output file is the answer to the \"question\" of the input data.\n\n	          The following example is of two 1 digit binary numbers (a zero or\n	          one) as the inputs, and their sum as the output (0 + 0 = 0, 1 + 0\n	          = 1, 0 + 1 = 1, 1 + 1 = 2).\n\n	     Input File:\n	          {zero, one, two};\n	          {0, 0}; \n	          {1, 0}; \n	          {0, 1}; \n	          {1, 1}\n\n	     Output File:\n	          {zero, one, two};\n	          {1, 0, 0};\n	          {0, 1, 0};\n	          {0, 1, 0};\n	          {0, 0, 1}\n\n	     So the words (zero, one, two) are the answers, in order, from top to\n	     bottom. As you can see, the output file is the answers to the input.\n	     For the first \"question\"  0 + 0 has the answer 0, that is why the \n	     answer in the output file the first answer array has a 1 in the first \n	     position, which as seen in the answer names, is \"zero,\" and the\n	     rest of the positions are marked as 0s.\n\n	     Just one more example with the previous one, to drive home how it\n	     works. For the 3rd \"question,\" it is 0 and 1, which will equal 1. so\n	     in the 3rd \"answer,\" the only position with a 1 is the center, since\n	     the first position is zero, second is one, and third is two.\n\n	     Also, the data does not have to be added together as the answer, you\n	     can put in abstract data, such as entering in all the pixels of a\n	     picture (the picture either containing an apple or orange), and\n	     having there be two answers, orange or apple, meaning the top line\n	     of each file (input and output) will start with this:\n\n	     {Orange, Apple};\n\n	     It is also important to note that each line is seperated by a semi-\n	     colon, EXCEPT the last line, which does NOT have a semicolon at the\n	     end of the line. Also, spaces and new lines have no meaning in the\n	     file, just the digits, curly brackets, commas, semicolons, and words\n	     in the first line of each file (those too have to be seperated by\n	     commas, enclosed in curly brackets, and have a semicolon at the end\n	     of the line.");
+                text.setText("\n	Github: https://github.com/benjaminBroudy/TrainABrain \n\n	-How Should I Set Up My Input and Output Files?\n\n	     First of all, what is \"input\" and \"output?\"\n	          Well... this is the training data, the data that shows the network\n	          how to learn. For the nth position of the input data, the nth position\n	          of the output file is the answer to the \"question\" of the input data.\n\n	          The following example is of two 1 digit binary numbers (a zero or\n	          one) as the inputs, and their sum as the output (0 + 0 = 0, 1 + 0\n	          = 1, 0 + 1 = 1, 1 + 1 = 2).\n\n	     Input File:\n	          {zero, one, two};\n	          {0, 0}; \n	          {1, 0}; \n	          {0, 1}; \n	          {1, 1}\n\n	     Output File:\n	          {zero, one, two};\n	          {1, 0, 0};\n	          {0, 1, 0};\n	          {0, 1, 0};\n	          {0, 0, 1}\n\n	     So the words (zero, one, two) are the answers, in order, from top to\n	     bottom. As you can see, the output file is the answers to the input.\n	     For the first \"question\"  0 + 0 has the answer 0, that is why the \n	     answer in the output file the first answer array has a 1 in the first \n	     position, which as seen in the answer names, is \"zero,\" and the\n	     rest of the positions are marked as 0s.\n\n	     Just one more example with the previous one, to drive home how it\n	     works. For the 3rd \"question,\" it is 0 and 1, which will equal 1. so\n	     in the 3rd \"answer,\" the only position with a 1 is the center, since\n	     the first position is zero, second is one, and third is two.\n\n	     Also, the data does not have to be added together as the answer, you\n	     can put in abstract data, such as entering in all the pixels of a\n	     picture (the picture either containing an apple or orange), and\n	     having there be two answers, orange or apple, meaning the top line\n	     of each file (input and output) will start with this:\n\n	     {Orange, Apple};\n\n	     It is also important to note that each line is seperated by a semi-\n	     colon, EXCEPT the last line, which does NOT have a semicolon at the\n	     end of the line. Also, spaces and new lines have no meaning in the\n	     file, just the digits, curly brackets, commas, semicolons, and words\n	     in the first line of each file (those too have to be seperated by\n	     commas, enclosed in curly brackets, and have a semicolon at the end\n	     of the line.");
                 text.setCaretPosition(0);
                 text.setEditable(false);
 
@@ -2321,7 +2321,7 @@ public class NeuralNetwork {
         jframe1.setIconImage(img.getImage());
         JTextArea[] outputs = new JTextArea[arr.size()];
         JToggleButton toggle = new JToggleButton("Press To See Percentages");
-        JButton exitButton = new JButton("Exit");
+        JButton exitButton = new JButton("Exit!");
         JButton helpButton = new JButton("Help!");
         JButton copy = new JButton("Copy Percentages");
         JTextArea percentagesText = new JTextArea();
@@ -2449,7 +2449,7 @@ public class NeuralNetwork {
                 helpFrame.setLocationRelativeTo(null);
 
                 text.setBounds(25, 25, 100, 100);
-                text.setText("	-How Should I Set Up My Input and Output Files?\n\n	     First of all, what is \"input\" and \"output?\"\n	          Well... this is the training data, the data that shows the network\n	          how to learn. For the nth position of the input data, the nth position\n	          of the output file is the answer to the \"question\" of the input data.\n\n	          The following example is of two 1 digit binary numbers (a zero or\n	          one) as the inputs, and their sum as the output (0 + 0 = 0, 1 + 0\n	          = 1, 0 + 1 = 1, 1 + 1 = 2).\n\n	     Input File:\n	          {zero, one, two};\n	          {0, 0}; \n	          {1, 0}; \n	          {0, 1}; \n	          {1, 1}\n\n	     Output File:\n	          {zero, one, two};\n	          {1, 0, 0};\n	          {0, 1, 0};\n	          {0, 1, 0};\n	          {0, 0, 1}\n\n	     So the words (zero, one, two) are the answers, in order, from top to\n	     bottom. As you can see, the output file is the answers to the input.\n	     For the first \"question\"  0 + 0 has the answer 0, that is why the \n	     answer in the output file the first answer array has a 1 in the first \n	     position, which as seen in the answer names, is \"zero,\" and the\n	     rest of the positions are marked as 0s.\n\n	     Just one more example with the previous one, to drive home how it\n	     works. For the 3rd \"question,\" it is 0 and 1, which will equal 1. so\n	     in the 3rd \"answer,\" the only position with a 1 is the center, since\n	     the first position is zero, second is one, and third is two.\n\n	     Also, the data does not have to be added together as the answer, you\n	     can put in abstract data, such as entering in all the pixels of a\n	     picture (the picture either containing an apple or orange), and\n	     having there be two answers, orange or apple, meaning the top line\n	     of each file (input and output) will start with this:\n\n	     {Orange, Apple};\n\n	     It is also important to note that each line is seperated by a semi-\n	     colon, EXCEPT the last line, which does NOT have a semicolon at the\n	     end of the line. Also, spaces and new lines have no meaning in the\n	     file, just the digits, curly brackets, commas, semicolons, and words\n	     in the first line of each file (those too have to be seperated by\n	     commas, enclosed in curly brackets, and have a semicolon at the end\n	     of the line.");
+                text.setText("\n	Github: https://github.com/benjaminBroudy/TrainABrain \n\n	-How Should I Set Up My Input and Output Files?\n\n	     First of all, what is \"input\" and \"output?\"\n	          Well... this is the training data, the data that shows the network\n	          how to learn. For the nth position of the input data, the nth position\n	          of the output file is the answer to the \"question\" of the input data.\n\n	          The following example is of two 1 digit binary numbers (a zero or\n	          one) as the inputs, and their sum as the output (0 + 0 = 0, 1 + 0\n	          = 1, 0 + 1 = 1, 1 + 1 = 2).\n\n	     Input File:\n	          {zero, one, two};\n	          {0, 0}; \n	          {1, 0}; \n	          {0, 1}; \n	          {1, 1}\n\n	     Output File:\n	          {zero, one, two};\n	          {1, 0, 0};\n	          {0, 1, 0};\n	          {0, 1, 0};\n	          {0, 0, 1}\n\n	     So the words (zero, one, two) are the answers, in order, from top to\n	     bottom. As you can see, the output file is the answers to the input.\n	     For the first \"question\"  0 + 0 has the answer 0, that is why the \n	     answer in the output file the first answer array has a 1 in the first \n	     position, which as seen in the answer names, is \"zero,\" and the\n	     rest of the positions are marked as 0s.\n\n	     Just one more example with the previous one, to drive home how it\n	     works. For the 3rd \"question,\" it is 0 and 1, which will equal 1. so\n	     in the 3rd \"answer,\" the only position with a 1 is the center, since\n	     the first position is zero, second is one, and third is two.\n\n	     Also, the data does not have to be added together as the answer, you\n	     can put in abstract data, such as entering in all the pixels of a\n	     picture (the picture either containing an apple or orange), and\n	     having there be two answers, orange or apple, meaning the top line\n	     of each file (input and output) will start with this:\n\n	     {Orange, Apple};\n\n	     It is also important to note that each line is seperated by a semi-\n	     colon, EXCEPT the last line, which does NOT have a semicolon at the\n	     end of the line. Also, spaces and new lines have no meaning in the\n	     file, just the digits, curly brackets, commas, semicolons, and words\n	     in the first line of each file (those too have to be seperated by\n	     commas, enclosed in curly brackets, and have a semicolon at the end\n	     of the line.");
                 text.setCaretPosition(0);
                 text.setEditable(false);
 
@@ -2554,7 +2554,7 @@ public class NeuralNetwork {
         Object obj = new Object();
         saveNetwork = true;
 
-        save.setSize(380, 130);
+        save.setSize(380, 160);
         save.setResizable(false);
         save.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         save.setLocationRelativeTo(null);

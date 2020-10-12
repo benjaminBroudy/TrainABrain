@@ -1,0 +1,1 @@
+trained with 10,000,000 then continued with 1,000,000
